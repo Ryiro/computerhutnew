@@ -37,349 +37,118 @@ const isValidCategory = (category: string) => {
   return validCategories.includes(category);
 };
 
-const renderTable = (category: string, products: any[]) => {
-  switch (category) {
-    case "cpu":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Microarchitecture</th>
-              <th className="py-2">Core Count</th>
-              <th className="py-2">Core Clock</th>
-              <th className="py-2">Boost Clock</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">
-                  {product.microarchitecture}
-                </td>
-                <td className="border px-4 py-2">{product.coreCount}</td>
-                <td className="border px-4 py-2">{product.coreClock}</td>
-                <td className="border px-4 py-2">{product.boostClock}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "gpu":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Chipset</th>
-              <th className="py-2">Memory</th>
-              <th className="py-2">Core Clock</th>
-              <th className="py-2">Boost Clock</th>
-              <th className="py-2">Color</th>
-              <th className="py-2">Length</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">TDP</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.chipset}</td>
-                <td className="border px-4 py-2">{product.memory}</td>
-                <td className="border px-4 py-2">{product.coreClock}</td>
-                <td className="border px-4 py-2">{product.boostClock}</td>
-                <td className="border px-4 py-2">{product.color}</td>
-                <td className="border px-4 py-2">{product.length}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">{product.TDP}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "motherboard":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Socket</th>
-              <th className="py-2">Form Factor</th>
-              <th className="py-2">Memory</th>
-              <th className="py-2">Memory Slots</th>
-              <th className="py-2">Core Clock</th>
-              <th className="py-2">Boost Clock</th>
-              <th className="py-2">Color</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.socket}</td>
-                <td className="border px-4 py-2">{product.formFactor}</td>
-                <td className="border px-4 py-2">{product.memory}</td>
-                <td className="border px-4 py-2">{product.memorySlots}</td>
-                <td className="border px-4 py-2">{product.coreClock}</td>
-                <td className="border px-4 py-2">{product.boostClock}</td>
-                <td className="border px-4 py-2">{product.color}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "memory":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Speed</th>
-              <th className="py-2">Modules</th>
-              <th className="py-2">First World Latency</th>
-              <th className="py-2">CAS Latency</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.speed}</td>
-                <td className="border px-4 py-2">{product.modules}</td>
-                <td className="border px-4 py-2">
-                  {product.firstworldlatency}
-                </td>
-                <td className="border px-4 py-2">{product.CASLatency}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "cooler":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">TDP</th>
-              <th className="py-2">RPM</th>
-              <th className="py-2">Noise</th>
-              <th className="py-2">Color</th>
-              <th className="py-2">Size</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.TDP}</td>
-                <td className="border px-4 py-2">{product.RPM}</td>
-                <td className="border px-4 py-2">{product.noise}</td>
-                <td className="border px-4 py-2">{product.color}</td>
-                <td className="border px-4 py-2">{product.size}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "storage":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Capacity</th>
-              <th className="py-2">Type</th>
-              <th className="py-2">Cache</th>
-              <th className="py-2">Form Factor</th>
-              <th className="py-2">Interface</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.capacity}</td>
-                <td className="border px-4 py-2">{product.type}</td>
-                <td className="border px-4 py-2">{product.cache}</td>
-                <td className="border px-4 py-2">{product.formFactor}</td>
-                <td className="border px-4 py-2">{product.interface}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "powersupply":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Type</th>
-              <th className="py-2">Efficiency</th>
-              <th className="py-2">Wattage</th>
-              <th className="py-2">Modular</th>
-              <th className="py-2">Color</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.Type}</td>
-                <td className="border px-4 py-2">{product.efficiency}</td>
-                <td className="border px-4 py-2">{product.wattage}</td>
-                <td className="border px-4 py-2">{product.Modular}</td>
-                <td className="border px-4 py-2">{product.color}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    case "case":
-      return (
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Name</th>
-              <th className="py-2">Manufacturer</th>
-              <th className="py-2">Type</th>
-              <th className="py-2">Color</th>
-              <th className="py-2">Power Supply</th>
-              <th className="py-2">Side Panel</th>
-              <th className="py-2">External Volume</th>
-              <th className="py-2">Internal Bay</th>
-              <th className="py-2">Rating</th>
-              <th className="py-2">In Stock</th>
-              <th className="py-2">Count</th>
-              <th className="py-2">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="border px-4 py-2">{product.product.name}</td>
-                <td className="border px-4 py-2">
-                  {product.product.manufacturer}
-                </td>
-                <td className="border px-4 py-2">{product.Type}</td>
-                <td className="border px-4 py-2">{product.color}</td>
-                <td className="border px-4 py-2">{product.powersupply}</td>
-                <td className="border px-4 py-2">{product.sidePanel}</td>
-                <td className="border px-4 py-2">{product.externalVolume}</td>
-                <td className="border px-4 py-2">{product.internalBay}</td>
-                <td className="border px-4 py-2">{product.Rating}</td>
-                <td className="border px-4 py-2">
-                  {product.inStock ? "Yes" : "No"}
-                </td>
-                <td className="border px-4 py-2">{product.count}</td>
-                <td className="border px-4 py-2">{product.product.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    default:
-      return null;
-  }
+const renderCards = (category: string, products: any[]) => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      {products.map((product) => (
+        <div key={product.id} className="border rounded-lg shadow-lg p-4">
+          <div className="h-40 bg-gray-200 mb-4">Image</div>
+          <div className="font-bold text-lg mb-2">{product.product.name}</div>
+          <div className="text-gray-700">${product.product.price}</div>
+          <div className="text-gray-500">{product.product.manufacturer}</div>
+          {category === "cpu" && (
+            <>
+              <div>Microarchitecture: {product.microarchitecture}</div>
+              <div>Core Count: {product.coreCount}</div>
+              <div>Core Clock: {product.coreClock}</div>
+              <div>Boost Clock: {product.boostClock}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "gpu" && (
+            <>
+              <div>Chipset: {product.chipset}</div>
+              <div>Memory: {product.memory}</div>
+              <div>Core Clock: {product.coreClock}</div>
+              <div>Boost Clock: {product.boostClock}</div>
+              <div>Color: {product.color}</div>
+              <div>Length: {product.length}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>TDP: {product.TDP}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "motherboard" && (
+            <>
+              <div>Socket: {product.socket}</div>
+              <div>Form Factor: {product.formFactor}</div>
+              <div>Memory: {product.memory}</div>
+              <div>Memory Slots: {product.memorySlots}</div>
+              <div>Core Clock: {product.coreClock}</div>
+              <div>Boost Clock: {product.boostClock}</div>
+              <div>Color: {product.color}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "memory" && (
+            <>
+              <div>Speed: {product.speed}</div>
+              <div>Modules: {product.modules}</div>
+              <div>First World Latency: {product.firstworldlatency}</div>
+              <div>CAS Latency: {product.CASLatency}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "cooler" && (
+            <>
+              <div>TDP: {product.TDP}</div>
+              <div>RPM: {product.RPM}</div>
+              <div>Noise: {product.noise}</div>
+              <div>Color: {product.color}</div>
+              <div>Size: {product.size}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "storage" && (
+            <>
+              <div>Capacity: {product.capacity}</div>
+              <div>Type: {product.type}</div>
+              <div>Cache: {product.cache}</div>
+              <div>Form Factor: {product.formFactor}</div>
+              <div>Interface: {product.interface}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "powersupply" && (
+            <>
+              <div>Type: {product.Type}</div>
+              <div>Efficiency: {product.efficiency}</div>
+              <div>Wattage: {product.wattage}</div>
+              <div>Modular: {product.Modular}</div>
+              <div>Color: {product.color}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+          {category === "case" && (
+            <>
+              <div>Type: {product.Type}</div>
+              <div>Color: {product.color}</div>
+              <div>Power Supply: {product.powersupply}</div>
+              <div>Side Panel: {product.sidePanel}</div>
+              <div>External Volume: {product.externalVolume}</div>
+              <div>Internal Bay: {product.internalBay}</div>
+              <div>Rating: {product.Rating}</div>
+              <div>In Stock: {product.inStock ? "Yes" : "No"}</div>
+              <div>Count: {product.count}</div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default async function ProductsPage({
@@ -401,8 +170,8 @@ export default async function ProductsPage({
 
   return (
     <div>
-      <h1 className="text-4xl">All Products of {category}</h1>
-      {renderTable(category, products)}
+      <h1 className="text-4xl mb-8">All Products of {category}</h1>
+      {renderCards(category, products)}
     </div>
   );
 }

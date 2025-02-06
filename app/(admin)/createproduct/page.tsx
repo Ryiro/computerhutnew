@@ -45,7 +45,7 @@ const Page = () => {
               <option value="memory">Memory</option>
               <option value="cooler">Cooler</option>
               <option value="storage">Storage</option>
-              <option value="power_supply">Power Supply</option>
+              <option value="powersupply">Power Supply</option>
               <option value="case">Case</option>
             </select>
           </div>
@@ -308,7 +308,7 @@ const Page = () => {
             </>
           )}
 
-          {selectedOption === "power_supply" && (
+          {selectedOption === "powersupply" && (
             <>
               <input
                 type="text"
@@ -365,7 +365,7 @@ const Page = () => {
               />
               <input
                 type="number"
-                name="power_supply"
+                name="powersupply"
                 placeholder="Power Supply"
                 className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
