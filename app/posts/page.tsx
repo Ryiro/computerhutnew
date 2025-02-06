@@ -8,11 +8,11 @@ export default async function PostPage() {
       <h1>Posts</h1>
       <ul>
         {posts.map((post) => (
-          <Link href={`/posts/${post.slug}`} key={post.id}>
-            <li key={post.id}>
+          <li key={post.id}>
+            <Link href={`/posts/${post.slug}`}>
               {post.title} {post.content}
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

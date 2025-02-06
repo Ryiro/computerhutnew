@@ -29,7 +29,154 @@ model Post {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
   author    User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
+  userId    String
 
   @@index([slug])
+}
+
+model Product {
+  id           String  @id @default(cuid())
+  name         String  @unique
+  slug         String  @unique
+  price        Float
+  manufacturer String
+  category     String?
+
+  inStock     Boolean?
+  count       Int?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  cpu         cpu?
+  gpu         gpu?
+  motherboard motherboard?
+  memory      memory?
+  cooler      cooler?
+  storage     storage?
+  powersupply powersupply?
+  case        Case?
+
+  @@index([slug])
+}
+
+model gpu {
+  productId  String   @unique
+  product    Product  @relation(fields: [productId], references: [id])
+  chipset    String
+  memory     Int
+  coreClock  Int?
+  boostClock Int?
+  color      String?
+  length     Int?
+  Rating     Int?
+  TDP        Int
+  inStock    Boolean
+  count      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model cpu {
+  productId         String   @unique
+  product           Product  @relation(fields: [productId], references: [id])
+  microarchitecture String
+  coreCount         Int
+  coreClock         Int?
+  boostClock        Int?
+  Rating            Int?
+  inStock           Boolean
+  count             Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now())
+}
+
+model motherboard {
+  productId   String   @unique
+  product     Product  @relation(fields: [productId], references: [id])
+  socket      String
+  formFactor  String
+  memory      Int?
+  memorySlots Int
+  coreClock   Int?
+  boostClock  Int?
+  color       String?
+  Rating      Int?
+  inStock     Boolean
+  count       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+}
+
+model memory {
+  productId         String   @unique
+  product           Product  @relation(fields: [productId], references: [id])
+  speed             String
+  modules           String
+  firstworldlatency Int
+  CASLatency        Int
+  Rating            Int?
+  inStock           Boolean
+  count             Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now())
+}
+
+model cooler {
+  productId String   @unique
+  product   Product  @relation(fields: [productId], references: [id])
+  TDP       Int
+  RPM       Int
+  noise     Float
+  color     String?
+  size      Int
+  Rating    Int?
+  inStock   Boolean
+  count     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model storage {
+  productId  String   @unique
+  product    Product  @relation(fields: [productId], references: [id])
+  capacity   String
+  type       String
+  cache      Int
+  formFactor String
+  interface  String
+  Rating     Int?
+  inStock    Boolean
+  count      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model powersupply {
+  productId  String   @unique
+  product    Product  @relation(fields: [productId], references: [id])
+  Type       String
+  efficiency String
+  wattage    Int
+  Modular    String
+  color      String
+  Rating     Int?
+  inStock    Boolean
+  count      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model Case {
+  productId      String   @unique
+  product        Product  @relation(fields: [productId], references: [id])
+  Type           String
+  color          String
+  powerSupply    Int
+  sidePanel      String
+  externalVolume Float
+  internalBay    Int
+  Rating         Int?
+  inStock        Boolean
+  count          Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
 }

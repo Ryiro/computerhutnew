@@ -4,7 +4,7 @@ import { unstable_cache as cache } from "next/cache";
 const getCachedPost = cache((slug) => {
   return prisma.post.findUnique({
     where: {
-      slug,
+      slug: slug,
     },
   });
 });
@@ -12,11 +12,7 @@ const getCachedPost = cache((slug) => {
 export default async function Post({ params }: { params: { slug: string } }) {
   const parameter = await params;
   const post = await getCachedPost(parameter.slug);
-  // const post = await prisma.post.findUnique({
-  //   where: {
-  //     slug: parameter.slug,
-  //   },
-  // });
+
   return (
     <div>
       <h1 className="text-4xl">Individusl Post</h1>
